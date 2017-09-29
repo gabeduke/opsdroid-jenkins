@@ -1,4 +1,4 @@
-namespace: opsdroid
+version: '2'
 services:
 
   opsdroid:
@@ -28,4 +28,3 @@ services:
     ports:
       - '10025:25'
 
-version: '2'
