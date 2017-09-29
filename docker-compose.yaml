@@ -1,15 +1,19 @@
 version: '2'
 services:
 
-  namespace: jenkins
+  namespace: opsdroid
 
-  core.opsdroid:
+  opsdroid.opsdroid:
+    container_name: opsdroid
+    image: opsdroid/opsdroid:dev
+    volumes:
+      - ./config/ /etc/opsdroid
     ports:
     - "8080:8080"
     links:
     - jenkins:jenkins
 
-  jenkins.jenkins:
+  opsdroid.jenkins:
     container_name: jenkins
     image: jenkins:latest
     volumes:
@@ -20,7 +24,7 @@ services:
       - "8081:8080"
     restart: "always"
 
-  jenkins.mail:
+  opsdroid.mail:
     container_name: mail
     image: namshi/smtp
     ports:
