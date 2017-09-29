@@ -1,13 +1,13 @@
 version: '3'
 services:
 
-  opsdroid:
+  opsdroid.opsdroid:
     ports:
     - "8080:8080"
     links:
     - jenkins:jenkins
 
-  jenkins:
+  opsdroid.jenkins:
     container_name: jenkins
     image: jenkins:latest
     volumes:
@@ -18,7 +18,7 @@ services:
       - "8081:8080"
     restart: "always"
 
-  mail:
+  opsdroid.mail:
     container_name: mail
     image: namshi/smtp
     ports:
