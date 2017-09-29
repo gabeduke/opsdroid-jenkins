@@ -1,31 +1,28 @@
-version: '2'
-services:
+namespace: opsdroid
 
-  namespace: opsdroid
+opsdroid.opsdroid:
+  container_name: opsdroid
+  image: opsdroid/opsdroid:dev
+  volumes:
+    - ./config/ /etc/opsdroid
+  ports:
+  - "8080:8080"
+  links:
+  - jenkins:jenkins
 
-  opsdroid.opsdroid:
-    container_name: opsdroid
-    image: opsdroid/opsdroid:dev
-    volumes:
-      - ./config/ /etc/opsdroid
-    ports:
-    - "8080:8080"
-    links:
-    - jenkins:jenkins
+opsdroid.jenkins:
+  container_name: jenkins
+  image: jenkins:latest
+  volumes:
+    - "~/.jenkins_home/:/var/jenkins_home"
+  expose:
+    - "8081"
+  ports:
+    - "8081:8080"
+  restart: "always"
 
-  opsdroid.jenkins:
-    container_name: jenkins
-    image: jenkins:latest
-    volumes:
-      - "~/.jenkins_home/:/var/jenkins_home"
-    expose:
-      - "8081"
-    ports:
-      - "8081:8080"
-    restart: "always"
-
-  opsdroid.mail:
-    container_name: mail
-    image: namshi/smtp
-    ports:
-      - '10025:25'
+opsdroid.mail:
+  container_name: mail
+  image: namshi/smtp
+  ports:
+    - '10025:25'
