@@ -1,6 +1,8 @@
 version: '3'
 services:
 
+  namespace: opsdroid
+
   opsdroid.opsdroid:
     ports:
     - "8080:8080"
