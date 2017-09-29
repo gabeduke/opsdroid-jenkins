@@ -1,7 +1,6 @@
 version: '3'
 services:
-
-  namespace: opsdroid
+namespace: opsdroid
 
   opsdroid.opsdroid:
     ports:
