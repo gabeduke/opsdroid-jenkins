@@ -1,5 +1,5 @@
-# namespace is required to be used with dcao-includes which will pull in external docker-compose files
 namespace: opsdroid
+# namespace is required to be used with dcao-includes which will pull in external docker-compose files
 services:
 
   opsdroid:
