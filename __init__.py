@@ -24,7 +24,7 @@ class BuildServer:
 @match_regex(r'build', case_sensitive=False)
 async def build_job(opsdroid, config, message):
     try:
-        await message.respond(random.choice(config['language']['build-confirm']))
+        await message.respond('Job building..')
         BuildServer(config, 'builder')
     except KeyError:
         await message.respond('Configuration not found')
