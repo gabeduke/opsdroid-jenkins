@@ -12,11 +12,12 @@ class BuildServer:
         try:
             username = config['credentials']['username']
             password = config['credentials']['password']
+            url = config['jenkins_url']
         except FileNotFoundError:
             _LOGGER.error('jenkins_credentials.yaml not found. Please copy from template in '
                           'config/jenkins_credentials.yaml.example')
 
-        server = jenkins.Jenkins('http://jenkins:8080', username=username, password=password)
+        server = jenkins.Jenkins(url, username=username, password=password)
         server.build_job(self.job)
 
 
